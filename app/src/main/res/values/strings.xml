@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Android Bass</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Settings -->
+    <string name="group_title_analytics">Statistics</string>
+    <string name="key_analytics">key_analytics</string>
+    <string name="title_analytics">Help improve this app</string>
+    <string name="summary_analytics">Send the developers statistics about your interactions</string>
+
+    <string name="group_title_about_dev">Developer</string>
+    <string name="title_contact_dev">Contact developers</string>
+    <string name="title_other_apps">Other apps</string>
+    <string name="title_privacy">Privacy policy</string>
+    <string name="title_os_licences">Open source licences</string>
+    <string name="title_version">Version</string>
+    <string name="key_version">key_version</string>
+    <string name="version_name_error">Cannot find version</string>
+    <string name="key_os_licences">key_os_licences</string>
+
+</resources>

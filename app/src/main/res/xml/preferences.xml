@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/group_title_analytics">
+
+        <SwitchPreference
+            android:key="@string/key_analytics"
+            android:title="@string/title_analytics"
+            android:summary="@string/summary_analytics"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/group_title_about_dev">
+
+        <PreferenceScreen android:title="@string/title_contact_dev">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:hello@example.com" />
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/title_other_apps">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="market://search?q=pub:Google" />
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="@string/title_privacy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.example.com" />
+        </PreferenceScreen>
+
+        <Preference
+            android:key="@string/key_os_licences"
+            android:title="@string/title_os_licences" />
+
+        <Preference
+            android:key="@string/key_version"
+            android:title="@string/title_version" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

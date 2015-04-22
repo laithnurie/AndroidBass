@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def gitSha = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--short', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    } catch (ignored) {
+        return null;
+    }
+}
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 0 // bump for dogfood builds, public betas, etc.
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "uk.andrewjack.android.bass"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../keys/debug.keystore")
+            keyAlias "debug"
+            storePassword "android"
+            keyPassword "android"
+        }
+
+        release {
+            def Properties localProps = new Properties()
+            def File localPropsFile = file('../local.properties')
+            if (localPropsFile.exists()) {
+                localProps.load(new FileInputStream(localPropsFile))
+            }
+            def Properties keyProps = new Properties()
+            if (localProps['keystore.props.file'] != null) {
+                keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+            }
+            storeFile keyProps["store"] != null ? file(keyProps["store"]) : null
+            keyAlias keyProps["alias"] ?: ""
+            storePassword keyProps["storePass"] ?: ""
+            keyPassword keyProps["pass"] ?: ""
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            versionNameSuffix '_debug_' + gitSha()
+            applicationIdSuffix '.debug'
+        }
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    // Google Android Libraries
+    compile 'com.android.support:appcompat-v7:22.1.0'
+    compile 'com.android.support:recyclerview-v7:22.1.0'
+    compile 'com.android.support:cardview-v7:22.1.0'
+
+    // Dagger 2 - DI
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+
+    // RxAndroid - asynchronous operations
+    compile 'io.reactivex:rxandroid:0.24.0'
+
+    // Timber - Logging
+    compile 'com.jakewharton.timber:timber:3.0.1'
+
+    // OkHttp - HttpUrlConnection, but without the problems between android versions
+    compile 'com.squareup.okhttp:okhttp:2.3.0'
+
+    // Retrofit - rest interface
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+
+    // Otto - Event bus
+    compile 'com.squareup:otto:1.3.6'
+
+    // Image Loading - Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Butterknife - View binding
+    compile 'com.jakewharton:butterknife:6.1.0'
+
+    // Material dialogs for all
+    compile 'com.afollestad:material-dialogs:0.7.2.4'
+
+    // License dialog - shows all OS libraries used
+    compile('de.psdev.licensesdialog:licensesdialog:1.7.0') {
+        exclude module: 'support-v4'
+    }
+
+    // Unit Testing
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
+}
