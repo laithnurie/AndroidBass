@@ -1,14 +1,15 @@
 package com.example.android.bass.ui.activity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.example.android.bass.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.Optional;
-import com.example.android.bass.R;
 
-public abstract class BaseActivity extends ActionBarActivity implements ToolbarProvider {
+public abstract class BaseActivity extends AppCompatActivity implements ToolbarProvider {
 
     @Optional
     @InjectView(R.id.toolbar)
