@@ -109,9 +109,6 @@ dependencies {
     // Butterknife - View binding
     compile 'com.jakewharton:butterknife:6.1.0'
 
-    // Material dialogs for all
-    compile 'com.afollestad:material-dialogs:0.7.2.4'
-
     // License dialog - shows all OS libraries used
     compile('de.psdev.licensesdialog:licensesdialog:1.7.0') {
         exclude module: 'support-v4'

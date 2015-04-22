@@ -55,13 +55,6 @@
     </notice>
 
     <notice>
-        <name>Material Dialogs</name>
-        <url>https://github.com/afollestad/material-dialogs</url>
-        <copyright>Copyright 2015 Aidan Michael Follestad</copyright>
-        <license>MIT License</license>
-    </notice>
-
-    <notice>
         <name>Android Support Libraries</name>
         <url>https://android.googlesource.com/platform/frameworks/support.git</url>
         <copyright>Copyright 2012 The Android Open Source Project</copyright>
