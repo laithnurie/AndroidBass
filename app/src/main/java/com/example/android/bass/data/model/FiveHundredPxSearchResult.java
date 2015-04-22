@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.data.model;
+package com.example.android.bass.data.model;
 
 import java.util.List;
 

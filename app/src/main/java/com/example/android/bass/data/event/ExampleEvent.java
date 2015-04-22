@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.data.event;
+package com.example.android.bass.data.event;
 
 public class ExampleEvent {
 

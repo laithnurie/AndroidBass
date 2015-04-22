@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.data.api;
+package com.example.android.bass.data.api;
 
 import android.content.res.Resources;
 
@@ -11,8 +11,8 @@ import dagger.Provides;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
-import uk.andrewjack.android.bass.BuildConfig;
-import uk.andrewjack.android.bass.R;
+import com.example.android.bass.BuildConfig;
+import com.example.android.bass.R;
 
 @Module
 public class ApiModule {

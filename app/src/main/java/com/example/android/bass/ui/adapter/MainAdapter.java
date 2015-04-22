@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.adapter;
+package com.example.android.bass.ui.adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +14,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import uk.andrewjack.android.bass.R;
-import uk.andrewjack.android.bass.data.model.FiveHundredPxPhoto;
+import com.example.android.bass.R;
+import com.example.android.bass.data.model.FiveHundredPxPhoto;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 

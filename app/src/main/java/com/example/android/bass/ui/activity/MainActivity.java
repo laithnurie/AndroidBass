@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.activity;
+package com.example.android.bass.ui.activity;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,12 +10,12 @@ import com.squareup.otto.Subscribe;
 
 import javax.inject.Inject;
 
-import uk.andrewjack.android.bass.BassApp;
-import uk.andrewjack.android.bass.R;
-import uk.andrewjack.android.bass.data.event.ExampleEvent;
-import uk.andrewjack.android.bass.ui.fragment.MainFragment;
+import com.example.android.bass.BassApp;
+import com.example.android.bass.R;
+import com.example.android.bass.data.event.ExampleEvent;
+import com.example.android.bass.ui.fragment.MainFragment;
 
-import static uk.andrewjack.android.bass.ui.activity.SettingsActivity.getSettingsIntent;
+import static com.example.android.bass.ui.activity.SettingsActivity.getSettingsIntent;
 
 public class MainActivity extends BaseActivity {
 

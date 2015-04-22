@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.fragment;
+package com.example.android.bass.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.preference.PreferenceFragment;
 import javax.inject.Inject;
 
 import de.psdev.licensesdialog.LicensesDialog;
-import uk.andrewjack.android.bass.BassApp;
-import uk.andrewjack.android.bass.R;
-import uk.andrewjack.android.bass.data.AppInfoHelper;
+import com.example.android.bass.BassApp;
+import com.example.android.bass.R;
+import com.example.android.bass.data.AppInfoHelper;
 
 public class SettingsFragment extends PreferenceFragment {
 

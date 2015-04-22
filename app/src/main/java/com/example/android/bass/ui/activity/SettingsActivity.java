@@ -1,11 +1,11 @@
-package uk.andrewjack.android.bass.ui.activity;
+package com.example.android.bass.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import uk.andrewjack.android.bass.R;
-import uk.andrewjack.android.bass.ui.fragment.SettingsFragment;
+import com.example.android.bass.R;
+import com.example.android.bass.ui.fragment.SettingsFragment;
 
 
 public class SettingsActivity extends BaseActivity {

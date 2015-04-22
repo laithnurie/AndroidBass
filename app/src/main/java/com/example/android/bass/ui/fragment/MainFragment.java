@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.fragment;
+package com.example.android.bass.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -25,13 +25,13 @@ import rx.Subscription;
 import rx.android.app.AppObservable;
 import rx.subscriptions.Subscriptions;
 import timber.log.Timber;
-import uk.andrewjack.android.bass.BassApp;
-import uk.andrewjack.android.bass.R;
-import uk.andrewjack.android.bass.data.api.FiveHundredPxApi;
-import uk.andrewjack.android.bass.data.event.ExampleEvent;
-import uk.andrewjack.android.bass.data.model.FiveHundredPxPhoto;
-import uk.andrewjack.android.bass.data.model.FiveHundredPxSearchResult;
-import uk.andrewjack.android.bass.ui.adapter.MainAdapter;
+import com.example.android.bass.BassApp;
+import com.example.android.bass.R;
+import com.example.android.bass.data.api.FiveHundredPxApi;
+import com.example.android.bass.data.event.ExampleEvent;
+import com.example.android.bass.data.model.FiveHundredPxPhoto;
+import com.example.android.bass.data.model.FiveHundredPxSearchResult;
+import com.example.android.bass.ui.adapter.MainAdapter;
 
 public class MainFragment extends BaseFragment implements MainAdapter.Listener, SwipeRefreshLayout.OnRefreshListener {
 

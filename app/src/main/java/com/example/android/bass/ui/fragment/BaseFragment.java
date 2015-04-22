@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.fragment;
+package com.example.android.bass.ui.fragment;
 
 import android.app.Fragment;
 

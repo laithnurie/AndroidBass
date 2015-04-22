@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.data;
+package com.example.android.bass.data;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

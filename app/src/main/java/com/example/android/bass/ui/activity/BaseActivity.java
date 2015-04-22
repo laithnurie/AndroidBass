@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.activity;
+package com.example.android.bass.ui.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.Optional;
-import uk.andrewjack.android.bass.R;
+import com.example.android.bass.R;
 
 public abstract class BaseActivity extends ActionBarActivity implements ToolbarProvider {
 

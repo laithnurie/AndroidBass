@@ -1,9 +1,9 @@
-package uk.andrewjack.android.bass;
+package com.example.android.bass;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
-import uk.andrewjack.android.bass.data.api.ApiModule;
+import com.example.android.bass.data.api.ApiModule;
 
 @Singleton
 @Component(modules = {BassAppModule.class, ApiModule.class})

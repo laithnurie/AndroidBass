@@ -1,4 +1,4 @@
-package uk.andrewjack.android.bass.ui.activity;
+package com.example.android.bass.ui.activity;
 
 import android.os.Bundle;
 

@@ -15,11 +15,11 @@
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 # Application classes that will be serialized/deserialized over Gson
--keep interface uk.andrewjack.android.bass.data.api.FiveHundredPxApi { *; }
--keep class uk.andrewjack.android.bass.data.api.FiveHundredPxApi { *; }
--keep class uk.andrewjack.android.bass.data.model.FiveHundredPxSearchResult { *; }
--keep class uk.andrewjack.android.bass.data.model.FiveHundredPxPhoto { *; }
--keep class uk.andrewjack.android.bass.data.model.FiveHundredPxUser { *; }
+-keep interface com.example.android.bass.data.api.FiveHundredPxApi { *; }
+-keep class com.example.android.bass.data.api.FiveHundredPxApi { *; }
+-keep class com.example.android.bass.data.model.FiveHundredPxSearchResult { *; }
+-keep class com.example.android.bass.data.model.FiveHundredPxPhoto { *; }
+-keep class com.example.android.bass.data.model.FiveHundredPxUser { *; }
 
 # Butterknife
 -keep class butterknife.** { *; }
