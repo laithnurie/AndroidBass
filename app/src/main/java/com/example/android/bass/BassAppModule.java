@@ -7,12 +7,6 @@ import android.net.ConnectivityManager;
 import android.support.v4.app.NotificationManagerCompat;
 import android.view.inputmethod.InputMethodManager;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
-import com.squareup.picasso.OkHttpDownloader;
-import com.squareup.picasso.Picasso;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -29,13 +23,13 @@ public class BassAppModule {
 
     @Provides
     @Singleton
-    Context provideApplicationContext() {
+    Context provideAppContext() {
         return application;
     }
 
     @Provides
     @Singleton
-    Resources provideApplicationResources() {
+    Resources provideAppResources() {
         return application.getResources();
     }
 
@@ -55,26 +49,6 @@ public class BassAppModule {
     @Singleton
     NotificationManagerCompat notificationManager() {
         return NotificationManagerCompat.from(application);
-    }
-
-    @Provides
-    @Singleton
-    OkHttpClient okHttpClient() {
-        return new OkHttpClient();
-    }
-
-    @Provides
-    @Singleton
-    Picasso picasso(OkHttpClient okHttpClient) {
-        return new Picasso.Builder(application)
-                .downloader(new OkHttpDownloader(okHttpClient))
-                .build();
-    }
-
-    @Provides
-    @Singleton
-    Bus bus() {
-        return new Bus(ThreadEnforcer.ANY);
     }
 
 }

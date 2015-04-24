@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.example.android.bass.data.StethoUtil;
+
 import timber.log.Timber;
 
 public class BassApp extends Application {
@@ -14,11 +16,13 @@ public class BassApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        component = BassComponent.Initializer.init(this);
-
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
+            StethoUtil.setupStetho(this);
         }
+
+        // Initialize dagger
+        component = BassComponent.Initializer.init(this);
 
         SharedPreferences userPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
