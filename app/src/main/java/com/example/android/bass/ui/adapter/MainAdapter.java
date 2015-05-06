@@ -72,7 +72,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         return data.size();
     }
 
-    public static interface Listener {
+    public interface Listener {
         void onItemClicked(FiveHundredPxPhoto photo);
     }
 

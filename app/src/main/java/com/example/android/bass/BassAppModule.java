@@ -41,13 +41,13 @@ public class BassAppModule {
 
     @Provides
     @Singleton
-    InputMethodManager inputMethodManager() {
+    InputMethodManager provideInputMethodManager() {
         return (InputMethodManager) application.getSystemService(Service.INPUT_METHOD_SERVICE);
     }
 
     @Provides
     @Singleton
-    NotificationManagerCompat notificationManager() {
+    NotificationManagerCompat provideNotificationManager() {
         return NotificationManagerCompat.from(application);
     }
 

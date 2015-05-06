@@ -1,4 +1,4 @@
-package com.example.android.bass.data.event;
+package com.example.android.bass.data.bus;
 
 public class ExampleEvent {
 

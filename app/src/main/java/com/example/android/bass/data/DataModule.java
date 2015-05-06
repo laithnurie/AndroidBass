@@ -3,10 +3,9 @@ package com.example.android.bass.data;
 import android.content.Context;
 
 import com.example.android.bass.BuildConfig;
+import com.example.android.bass.data.bus.RxBus;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
-import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
 import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
@@ -28,7 +27,7 @@ public class DataModule {
 
     @Provides
     @Singleton
-    OkHttpClient okHttpClient() {
+    OkHttpClient provideOkHttpClient() {
         final OkHttpClient client = new OkHttpClient();
 
         // set disk cache
@@ -44,7 +43,7 @@ public class DataModule {
 
     @Provides
     @Singleton
-    Picasso picasso(OkHttpClient okHttpClient) {
+    Picasso providePicasso(OkHttpClient okHttpClient) {
         return new Picasso.Builder(context)
                 .downloader(new OkHttpDownloader(okHttpClient))
                 .build();
@@ -52,8 +51,8 @@ public class DataModule {
 
     @Provides
     @Singleton
-    Bus bus() {
-        return new Bus(ThreadEnforcer.ANY);
+    RxBus provideRxBus() {
+        return new RxBus();
     }
 
 }

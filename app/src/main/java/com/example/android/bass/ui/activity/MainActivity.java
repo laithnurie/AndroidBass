@@ -5,22 +5,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
+import com.example.android.bass.BassApp;
+import com.example.android.bass.R;
+import com.example.android.bass.data.bus.ExampleEvent;
+import com.example.android.bass.data.bus.RxBus;
+import com.example.android.bass.ui.fragment.MainFragment;
 
 import javax.inject.Inject;
 
-import com.example.android.bass.BassApp;
-import com.example.android.bass.R;
-import com.example.android.bass.data.event.ExampleEvent;
-import com.example.android.bass.ui.fragment.MainFragment;
+import rx.Observable;
+import rx.Subscription;
+import rx.android.app.AppObservable;
+import rx.functions.Action1;
+import rx.subscriptions.Subscriptions;
 
 import static com.example.android.bass.ui.activity.SettingsActivity.getSettingsIntent;
 
 public class MainActivity extends BaseActivity {
 
     @Inject
-    Bus bus;
+    RxBus bus;
+
+    private Subscription busSubscription = Subscriptions.empty();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +40,20 @@ public class MainActivity extends BaseActivity {
                     .commit();
         }
 
-        bus.register(this);
+        resisterRxBus();
     }
 
-    @Subscribe
-    public void ohReally(ExampleEvent event) {
-        Toast.makeText(this, "Message from somewhere else in the app", Toast.LENGTH_SHORT).show();
+    private void resisterRxBus() {
+        Observable<Object> busObservable = AppObservable.bindActivity(this, bus.toObservable());
+        busSubscription = busObservable.subscribe(new Action1<Object>() {
+            @Override
+            public void call(Object event) {
+                if (event instanceof ExampleEvent) {
+                    Toast.makeText(MainActivity.this, "Message from somewhere else in the app", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,7 +75,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        bus.unregister(this);
+        busSubscription.unsubscribe();
         super.onDestroy();
     }
 }

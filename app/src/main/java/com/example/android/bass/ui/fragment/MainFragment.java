@@ -12,7 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.squareup.otto.Bus;
+import com.example.android.bass.BassApp;
+import com.example.android.bass.R;
+import com.example.android.bass.data.api.FiveHundredPxApi;
+import com.example.android.bass.data.bus.ExampleEvent;
+import com.example.android.bass.data.bus.RxBus;
+import com.example.android.bass.data.model.FiveHundredPxPhoto;
+import com.example.android.bass.data.model.FiveHundredPxSearchResult;
+import com.example.android.bass.ui.adapter.MainAdapter;
 import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
@@ -25,13 +32,6 @@ import rx.Subscription;
 import rx.android.app.AppObservable;
 import rx.subscriptions.Subscriptions;
 import timber.log.Timber;
-import com.example.android.bass.BassApp;
-import com.example.android.bass.R;
-import com.example.android.bass.data.api.FiveHundredPxApi;
-import com.example.android.bass.data.event.ExampleEvent;
-import com.example.android.bass.data.model.FiveHundredPxPhoto;
-import com.example.android.bass.data.model.FiveHundredPxSearchResult;
-import com.example.android.bass.ui.adapter.MainAdapter;
 
 public class MainFragment extends BaseFragment implements MainAdapter.Listener, SwipeRefreshLayout.OnRefreshListener {
 
@@ -40,7 +40,7 @@ public class MainFragment extends BaseFragment implements MainAdapter.Listener, 
     @Inject
     Picasso picasso;
     @Inject
-    Bus bus;
+    RxBus bus;
 
     @InjectView(R.id.recycler_view)
     RecyclerView mRecyclerView;
@@ -71,7 +71,7 @@ public class MainFragment extends BaseFragment implements MainAdapter.Listener, 
 
         fetchData();
 
-        bus.post(new ExampleEvent(false));
+        bus.send(new ExampleEvent(false));
 
         return rootView;
     }

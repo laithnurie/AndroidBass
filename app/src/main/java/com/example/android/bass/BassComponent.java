@@ -11,7 +11,7 @@ import com.example.android.bass.data.api.ApiModule;
 @Component(modules = {BassAppModule.class, DataModule.class, ApiModule.class})
 public interface BassComponent extends BassGraph {
 
-    public final static class Initializer {
+    final class Initializer {
         public static BassComponent init(BassApp app) {
             return DaggerBassComponent.builder()
                     .bassAppModule(new BassAppModule(app))
