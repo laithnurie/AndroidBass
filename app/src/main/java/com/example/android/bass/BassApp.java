@@ -6,16 +6,21 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.android.bass.data.StethoUtil;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import timber.log.Timber;
 
 public class BassApp extends Application {
 
     private BassComponent component;
+    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        refWatcher = LeakCanary.install(this);
+
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
             StethoUtil.setupStetho(this);
@@ -41,6 +46,11 @@ public class BassApp extends Application {
 
     public static BassComponent get(Context context) {
         return ((BassApp) context.getApplicationContext()).component;
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        BassApp application = (BassApp) context.getApplicationContext();
+        return application.refWatcher;
     }
 
 }

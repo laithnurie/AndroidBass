@@ -111,9 +111,11 @@ dependencies {
         exclude module: 'support-v4'
     }
 
-    // dev tool
+    // dev tools
     debugCompile 'com.facebook.stetho:stetho:1.1.0'
     debugCompile 'com.facebook.stetho:stetho-okhttp:1.1.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 
     // Unit Testing
     testCompile 'junit:junit:4.12'
